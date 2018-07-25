@@ -26,7 +26,7 @@ pipeline {
               println "Processing ${site}"
               sh "curl www.${site}.com/robots.txt > ${site}-latest.txt"
               check_robots = sh (
-                    script: "diff -b -s -B ${site}-latest.txt seo-robots/${site}.txt", // compare
+                    script: "diff -q ${site}-latest.txt seo-robots/${site}.txt", // compare
                     returnStdout: true
                     ).trim()
               println check_robots
