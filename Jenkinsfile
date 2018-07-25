@@ -36,7 +36,7 @@ pipeline {
           //               message: "Processed robots.txt for ${site} and found differences: ```${check_robots}```"
           //   }
           // }
-        }
+        // }
       }
       post {
         cleanup {
