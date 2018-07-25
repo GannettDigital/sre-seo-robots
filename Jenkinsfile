@@ -13,6 +13,7 @@ pipeline {
           //testing
           def site = "app"
           sh "curl -o ${site}-latest.txt https://www.${site}.com/robots.txt && echo RADIOHEAD_IN_RAINBOWS >> ${site}-latest.txt"
+          sh "cat ${site}-latest.txt"
             def identical = sh(script: "diff -q -B ${site}-latest.txt seo-robots/${site}.txt", returnStatus: true) == 0
             if (!identical) {
               def check_robots = sh(script: "diff -s -B ${site}-latest.txt seo-robots/${site}.txt", returnStdout: true).trim()
