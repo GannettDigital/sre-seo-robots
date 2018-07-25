@@ -18,7 +18,7 @@ pipeline {
           sh "cat ${site}-latest.txt"
             def identical = sh(script: "diff -q -B ${site}-latest.txt seo-robots/${site}.txt", returnStatus: true) == 0
             if (!identical) {
-              check_robots = sh(script: "set +e; diff -s -B ${site}-latest.txt seo-robots/${site}.txt; true", returnStdout: true).trim()
+              check_robots = sh(script: "set +e; diff -y -B ${site}-latest.txt seo-robots/${site}.txt; true", returnStdout: true).trim()
               println check_robots
               echo "${site} differed:\n${check_robots}"
               currentBuild.result = 'UNSTABLE'
