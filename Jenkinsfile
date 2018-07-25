@@ -12,6 +12,7 @@ pipeline {
         script {
           //testing
           def site = "app"
+          sh 'rm -r *-latest.txt || true'
           def check_robots
           sh "curl -o ${site}-latest.txt https://www.${site}.com/robots.txt && echo RADIOHEAD_IN_RAINBOWS >> ${site}-latest.txt"
           sh "cat ${site}-latest.txt"
@@ -25,6 +26,7 @@ pipeline {
                         channel: '#seo-robots-check',
                         message: "Processed robots.txt for ${site} and found differences: ```${check_robots}```"
             }
+            sh 'rm -r *-latest.txt || true'
 
           // def sites = readJSON file: 'sites.json'
           // sites.each { site ->
@@ -41,11 +43,11 @@ pipeline {
           // }
         // }
       }
-      post {
-        cleanup {
-          sh 'rm -r *-latest.txt || true'
-        }
-      }
+      // post {
+      //   cleanup {
+      //     sh 'rm -r *-latest.txt || true'
+      //   }
+      // }
     }
   }
 }
