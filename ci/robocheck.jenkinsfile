@@ -30,9 +30,9 @@ pipeline {
                     returnStdout: true
                     ).trim()
               println check_robots
-              if (!check_robots.toString().contains("identical")) {
-                slackSend color: 'danger', channel: '#seo-robots-check', message: "Processed robots.txt for ${site} and found ```${check_robots}``` changes"
-              }
+              // if (!check_robots.toString().contains("identical")) {
+              //   slackSend color: 'danger', channel: '#seo-robots-check', message: "Processed robots.txt for ${site} and found ```${check_robots}``` changes"
+              // }
               sh "rm -f ${site}-latest.txt"
               println "${site} Done"
 
