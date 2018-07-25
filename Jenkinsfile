@@ -17,21 +17,13 @@ pipeline {
           sh "cat ${site}-latest.txt"
             def identical = sh(script: "diff -q -B ${site}-latest.txt seo-robots/${site}.txt", returnStatus: true) == 0
             if (!identical) {
-              try {
-                check_robots = sh(script: "diff -s -B ${site}-latest.txt seo-robots/${site}.txt", returnStdout: true).trim()
-
-              }
-              catch(err){
-                println err
-
-              }
+              check_robots = sh(script: "set +e; diff -s -B ${site}-latest.txt seo-robots/${site}.txt; true", returnStdout: true).trim()
+              println check_robots
               echo "${site} differed:\n${check_robots}"
               currentBuild.result = 'UNSTABLE'
-              // slackSend color: 'danger',
-              //           channel: '#seo-robots-check',
-              //           message: "Processed robots.txt for ${site} and found differences: ```${check_robots}```"
-
-
+              slackSend color: 'danger',
+                        channel: '#seo-robots-check',
+                        message: "Processed robots.txt for ${site} and found differences: ```${check_robots}```"
             }
 
           // def sites = readJSON file: 'sites.json'
