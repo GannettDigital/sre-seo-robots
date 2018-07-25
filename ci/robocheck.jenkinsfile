@@ -7,6 +7,14 @@ pipeline {
     cron 'H 16 * * *'
   }
   stages {
+    stage('read git info') {
+        steps {
+          script {
+            deleteDir()
+            checkout scm
+          }
+        }
+    }
     stage('check sites') {
       steps {
         script {
@@ -25,7 +33,9 @@ pipeline {
               if (!check_robots.toString().contains("identical")) {
                 slackSend color: 'danger' channel: '#seo-robots-check', message: "Processed robots.txt for ${site} and found ```${check_robots}``` changes"
               }
+              sh "rm -f ${site}-latest.txt"
               println "${site} Done"
+
           }
         }
       }
