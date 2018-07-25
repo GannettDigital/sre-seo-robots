@@ -19,14 +19,15 @@ pipeline {
             if (!identical) {
               try {
                 check_robots = sh(script: "diff -s -B ${site}-latest.txt seo-robots/${site}.txt", returnStdout: true).trim()
+                echo "${site} differed:\n${check_robots}"
+                currentBuild.result = 'UNSTABLE'
+                slackSend color: 'danger',
+                          channel: '#seo-robots-check',
+                          message: "Processed robots.txt for ${site} and found differences: ```${check_robots}```"
               }
               catch(err){ }
 
-              echo "${site} differed:\n${check_robots}"
-              currentBuild.result = 'UNSTABLE'
-              slackSend color: 'danger',
-                        channel: '#seo-robots-check',
-                        message: "Processed robots.txt for ${site} and found differences: ```${check_robots}```"
+
             }
 
           // def sites = readJSON file: 'sites.json'
