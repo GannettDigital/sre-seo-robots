@@ -22,7 +22,7 @@ pipeline {
               currentBuild.result = 'UNSTABLE'
               slackSend color: 'danger',
                         channel: '#seo-robots-check',
-                        message: "Processed robots.txt for ${site} and found differences: ```${check_robots}```"
+                        message: "Processed robots.txt for ${site} and found differences: ```${check_robots}```"}
           // def sites = readJSON file: 'sites.json'
           // sites.each { site ->
           //   sh "curl -o ${site}-latest.txt https://www.${site}.com/robots.txt"
