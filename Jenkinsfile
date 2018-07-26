@@ -23,17 +23,17 @@ pipeline {
                 currentBuild.result = 'UNSTABLE'
                 slackSend color: 'danger',
                           channel: '#seo-robots-check',
-                          message: "Hey @ksutton ! Processed robots.txt for ${site} and found differences: ```${check_robots}```"
+                          message: "Hey @here ! Processed robots.txt for ${site} and found differences: ```${check_robots}```"
               }
             }
             slackSend color: "${mycolor}",
                       channel: '#seo-robots-check',
-                      message: "Hey @ksutton ! robots.txt check has been run and succesfully completed for all uscp sites. Discrepancies (if any) have been listed above."
+                      message: "Hey @here ! robots.txt check has been run and succesfully completed for all uscp sites. Discrepancies (if any) have been listed above."
 
           }catch(err){
             slackSend color: 'danger',
                       channel: '#seo-robots-check',
-                      message: "Hey @ksutton ! robots.txt check has resulted in failure. Please contact `#sre` to troubleshoot the jenkins Cron job. ```${err}```"
+                      message: "Hey @here ! robots.txt check has resulted in failure. Please contact `#sre` to troubleshoot the jenkins Cron job. ```${err}```"
           }
         }
       }
