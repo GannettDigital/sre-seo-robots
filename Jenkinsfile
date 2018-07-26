@@ -30,7 +30,7 @@ pipeline {
                 }else {
                   slackSend color: 'danger',
                             channel: '#seo-robots-check',
-                            message: "Processed robots.txt for ${site} and found differences: ```${check_robots}```"
+                            message: "Processed robots.txt for ${site} and found differences: ```${check_robots}``` Here's the robots live : https://www.${site}.com/robots.txt"
                 }
               }
             }
