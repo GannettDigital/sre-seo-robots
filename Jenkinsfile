@@ -26,6 +26,7 @@ pipeline {
                   slackSend color: 'warning',
                             channel: '#seo-robots-check',
                             message: "Processed robots.txt for ${site} and the difference probably is just an http instead of https. Don't worry about it. Here's the difference. ${check_robots}"
+                  currentBuild.result = 'SUCCESS'
                 }else {
                   slackSend color: 'danger',
                             channel: '#seo-robots-check',
