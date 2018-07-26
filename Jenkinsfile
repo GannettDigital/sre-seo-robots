@@ -19,7 +19,7 @@ pipeline {
               httpCheck = sh(script: "cat ${site}-http-latest.txt", returnStatus: true)
               println "${httpCheck}".size()
               identical = sh(script: "diff -q -B ${site}-latest.txt seo-robots/${site}.txt", returnStatus: true) == 0
-              if("${httpCheck}".size() > 0 ){
+              if("${httpCheck}".size() > 2 ){
                 identical2 = sh(script: "diff -q -B ${site}-http-latest.txt seo-robots/${site}.txt", returnStatus: true) == 0
               }
               if (!identical || !identical2) {
