@@ -21,17 +21,10 @@ pipeline {
                 def check_robots = sh(script: "set +e; diff -s -B ${site}-latest.txt seo-robots/${site}.txt; true", returnStdout: true).trim()
                 echo "${site} differed:\n${check_robots}"
                 currentBuild.result = 'UNSTABLE'
-                if("${site}"=="gametimepa"){
-                  mycolor = 'good'
-                  slackSend color: 'warning',
-                            channel: '#seo-robots-check',
-                            message: "Processed robots.txt for ${site} and the difference probably is just an http instead of https. Don't worry about it. Here's the difference. ${check_robots}"
-                  currentBuild.result = 'SUCCESS'
-                }else {
                   slackSend color: 'danger',
                             channel: '#seo-robots-check',
                             message: "Processed robots.txt for ${site} and found differences: ```${check_robots}``` Here's the robots live : https://www.${site}.com/robots.txt"
-                }
+
               }
             }
             slackSend color: "${mycolor}",
@@ -47,7 +40,7 @@ pipeline {
       }
       post {
         cleanup {
-          sh 'rm -r *-latest.txt || true'
+          sh 'rm -f *-latest.txt || true'
         }
       }
     }
