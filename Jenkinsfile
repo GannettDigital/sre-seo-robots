@@ -15,8 +15,9 @@ pipeline {
             def mycolor = 'good'
             def check_robots
             sites.each { site ->
-              sh "curl -o ${site}-latest.txt https://www.${site}.com/robots.txt"
-              def httpCheck = sh(script: "curl -o ${site}-http-latest.txt http://www.${site}.com/robots.txt", returnStatus: true)
+              sh "curl -o ${site}-latest.txt https://www.${site}.com/robots.txt && curl -o ${site}-http-latest.txt http://www.${site}.com/robots.txt"
+              def httpCheck = sh(script: "cat ${site}-http-latest.txt", returnStatus: true)
+              println "${httpCheck}".size()
               def identical = sh(script: "diff -q -B ${site}-latest.txt seo-robots/${site}.txt", returnStatus: true) == 0
               if("${httpCheck}".size() > 0 ){
                 def identical2 = sh(script: "diff -q -B ${site}-http-latest.txt seo-robots/${site}.txt", returnStatus: true) == 0
