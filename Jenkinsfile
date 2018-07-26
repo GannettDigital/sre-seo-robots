@@ -20,7 +20,7 @@ pipeline {
               println "${httpCheck}".size()
               identical = sh(script: "diff -q -B ${site}-latest.txt seo-robots/${site}.txt", returnStatus: true) == 0
               if("${httpCheck}".size() > 0 ){
-                 = sh(script: "diff -q -B ${site}-http-latest.txt seo-robots/${site}.txt", returnStatus: true) == 0
+                identical2 = sh(script: "diff -q -B ${site}-http-latest.txt seo-robots/${site}.txt", returnStatus: true) == 0
               }
               if (!identical || !identical2) {
                 mycolor = 'danger'
