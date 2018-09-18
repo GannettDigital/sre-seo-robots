@@ -1,0 +1,6 @@
+# robots.txt for https://www.trainuscp.com/
+
+# This is a non-production site.  Please do not index.
+User-Agent: *
+Disallow: /
+
