@@ -27,7 +27,7 @@ pipeline {
 
               }
             }
-            if (currentBuild.result = 'UNSTABLE') {
+            if (currentBuild.result == 'UNSTABLE') {
               slackSend color: 'danger',
                           channel: '#seo-robots-check',
                           message: "One or more sites had robots.txt differences. Check out the Google Bot dashboard for more context: https://service.us2.sumologic.com/ui/#/dashboard/MVoM95VCwQLbl97vfjd5dawKz2aVwZBxn41m3t3uaXtHACHCnQRrOr1qY5Ea"
