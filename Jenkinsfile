@@ -34,7 +34,7 @@ pipeline {
             }
             slackSend color: "${mycolor}",
                       channel: '#seo-robots-check',
-                      message: "Hey @here ! robots.txt check has been run and succesfully completed for all uscp sites. Discrepancies (if any) have been listed above."
+                      message: "Hey @here ! robots.txt check has been run and succesfully completed for usatoday and all uscp sites. Discrepancies (if any) have been listed above."
 
           }catch(err){
             slackSend color: 'danger',
