@@ -9,7 +9,6 @@ Disallow: /pages/interactives/sponsor-story/
 Disallow: /videos/embed/
 
 User-Agent: *
-Crawl-delay: 1
 Disallow: /errors
 Disallow: /interactive/
 Disallow: /userauth/

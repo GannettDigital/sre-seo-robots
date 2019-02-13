@@ -9,7 +9,6 @@ Disallow: /pages/interactives/sponsor-story/
 Disallow: /videos/embed/
 
 User-Agent: *
-Crawl-delay: 1
 Disallow: /errors
 Disallow: /interactive/
 Disallow: /userauth/
@@ -34,6 +33,8 @@ Disallow: /ux-train
 
 Disallow: /story/advisory/
 
+
+Disallow: /story/events/2019/01/23/2018-work/2654706002/
 
 
 
