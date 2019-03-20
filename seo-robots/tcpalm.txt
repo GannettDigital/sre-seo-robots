@@ -34,6 +34,12 @@ Disallow: /ux-train
 Disallow: /story/advisory/
 
 
+Disallow: /videos/nletter/2019/02/04/jungle-club-owner-defends-worker-charged-lewd-lascivious-molestation/103703770/
+
+Disallow: /story/news/local/indian-river-county/2017/09/27/charges-dropped-against-jungle-club-employee-vero-beach/708277001/
+
+Disallow: /story/news/crime/indian-river-county/2017/07/14/maintenance-man-charged-touching-child-attending-summer-camp/478687001/
+
 
 
 Sitemap: https://www.tcpalm.com/news-sitemap.xml
