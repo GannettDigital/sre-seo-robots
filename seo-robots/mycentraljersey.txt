@@ -38,7 +38,6 @@ Disallow: /story/news/crime/jersey-mayhem/2016/05/26/two-central-jersey-men-char
 
 
 
-
 Sitemap: https://www.mycentraljersey.com/news-sitemap.xml
 Sitemap: https://www.mycentraljersey.com/web-sitemap-index.xml
 Sitemap: https://www.mycentraljersey.com/video-sitemap-index.xml
