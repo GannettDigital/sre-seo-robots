@@ -34,10 +34,16 @@ Disallow: /ux-train
 Disallow: /story/advisory/
 
 
+Disallow: /story/money/business/consumer/2019/08/01/negative-online-review-plastic-surgery-center-shrewsbury/1714704001/
+
+Disallow: /optimus
+
+Disallow: /ux-train
+
+Disallow: /story/advisory/
+
 
 
 Sitemap: https://www.app.com/news-sitemap.xml
 Sitemap: https://www.app.com/web-sitemap-index.xml
 Sitemap: https://www.app.com/video-sitemap-index.xml
-
-
