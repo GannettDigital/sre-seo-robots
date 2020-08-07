@@ -1,7 +1,7 @@
 pipeline {
   agent {
         node {
-          label "generic-fbv"
+          label "clusterops-development-ephemeral"
         }
       }
   options {
