@@ -6,7 +6,7 @@ arr=('alamogordonews' 'app' 'argusleader' 'azcentral' 'battlecreekenquirer' 'bax
 for i in "${arr[@]}"
 do
   echo "processing $i"
-  curl "https://www.$i.com/robots.txt" >> "$i.txt"
+  curl --verbose "https://www.$i.com/robots.txt" >> "$i.txt"
   echo "$i is DONE \n ----------\n"
    # or do whatever with individual element of the array
 done
