@@ -14,7 +14,7 @@ pipeline {
             def sites = readJSON file: 'sites.json'
             def mycolor = 'good'
             sites.each { site ->
-              sh "curl -o ${site}-latest.txt https://www.${site}.com/robots.txt"
+              sh "curl --verbose -o ${site}-latest.txt https://www.${site}.com/robots.txt"
               def identical = sh(script: "diff -q -B ${site}-latest.txt seo-robots/${site}.txt", returnStatus: true) == 0
               if (!identical) {
                 mycolor = 'danger'
@@ -34,12 +34,12 @@ pipeline {
             }
             slackSend color: "${mycolor}",
                       channel: '#seo-robots-check',
-                      message: "Hey @here ! robots.txt check has been run and succesfully completed for usatoday and all uscp sites. Discrepancies (if any) have been listed above."
+                      message: "Hey! robots.txt check has been run and succesfully completed for usatoday and all uscp sites. Discrepancies (if any) have been listed above."
 
           }catch(err){
             slackSend color: 'danger',
                       channel: '#seo-robots-check',
-                      message: "Hey @here! robots.txt check has resulted in failure. Please contact `#sre` to troubleshoot the jenkins Cron job. ```${err}```"
+                      message: "Hey! robots.txt check has resulted in failure. Please contact `#sre` to troubleshoot the jenkins Cron job. ```${err}```"
           }
         }
       }
