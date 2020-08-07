@@ -1,5 +1,9 @@
 pipeline {
-  agent any
+  agent {
+        node {
+          label "generic"
+        }
+      }
   options {
     disableConcurrentBuilds()
   }
