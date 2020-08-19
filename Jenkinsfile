@@ -18,7 +18,7 @@ pipeline {
             def sites = readJSON file: 'sites.json'
             def mycolor = 'good'
             sites.each { site ->
-              sh "curl --verbose -o ${site}-latest.txt http://www.${site}.com/robots.txt"
+              sh "curl --verbose -o ${site}-latest.txt https://www.${site}.com/robots.txt"
               def identical = sh(script: "diff -q -B ${site}-latest.txt seo-robots/${site}.txt", returnStatus: true) == 0
               if (!identical) {
                 mycolor = 'danger'
