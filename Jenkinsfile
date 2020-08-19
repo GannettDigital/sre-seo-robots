@@ -25,8 +25,7 @@ pipeline {
                 def check_robots = sh(script: "set +e; diff -s -B ${site}-latest.txt seo-robots/${site}.txt; true", returnStdout: true).trim()
                 echo "${site} differed:\n${check_robots}" */
               }
-            }
-          }catch(err){
+            }catch(err){
           }
         }
       }
